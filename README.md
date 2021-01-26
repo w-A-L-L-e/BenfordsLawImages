@@ -1,8 +1,10 @@
 # BenfordsLawImages
 
-Watched this show on Netflix in the weekend called 'connected' which had all this mystery and wonder around Benford's law.
-One part was about applying it to images. So I got curious and wrote a little program quick and dirty to do this check myself.
-It can read jpeg and png images and prints out the benford results and an ascii graph.
+Watched this show on Netflix in the weekend called 'Connected' which had all this mystery and wonder around Benford's law.
+One part was about applying it to images. So I got curious and hacked together a little program to do this benford check myself.
+It can read jpeg and png images and prints out the benford results and an ascii graph. And yes this is just a quick hack, surely
+can be improved. But it was really funny to see the graph on a random image from facebook actually showing the same curve as
+was advertised in the netflix show.
 
 
 # installing
@@ -116,4 +118,6 @@ It works on this example but I can find plenty of 'real' photos that don't give 
 Incidently the second test also is not that bad (./img2benford tests/connected_digits_screenshot.jpg). 
 However take a photo in the city with buildings as a background and you get a totally deviating curve even though it wasn't manipulated.
 So maybe Benford only works on 'natural' things, meh, who knows... It was still worth the little effort to try it out myself ;).
+
+Some more screenshots and an explanation of the algorithm is here https://walter.schreppers.com/hobby_project/benfords_law
 
