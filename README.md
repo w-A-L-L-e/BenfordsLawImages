@@ -122,8 +122,8 @@ However take a photo in the city with buildings as a background and you get a to
 So maybe Benford only works on 'natural' things, meh, who knows... It was still worth the little effort to try it out myself ;).
 
 Now here comes the proof that it doesn't really work well for image manipulation detection. There's an edited image in tests/
-and if you run it with our tool it should show a graph different (flatter) than the original. However it doesn't it's even more close
-to the benford than the original.
+and if you run it with our tool it should show a graph different (flatter) than the original. However it doesn't, it's even more close
+to the benford curve than the original (normally the 1s are around 30%, in the original its 25%, in the edited image it's actually 27%).
 ```
 ./img2benford tests/nature_edited_red.jpg
 ```
