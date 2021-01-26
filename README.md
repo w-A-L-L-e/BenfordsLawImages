@@ -121,3 +121,7 @@ So maybe Benford only works on 'natural' things, meh, who knows... It was still 
 
 Some more screenshots and an explanation of the algorithm is here https://walter.schreppers.com/hobby_project/benfords_law
 
+# Credits
+Jenke Goffa for taking that beautiful picture of a waterfall that also produces the nice benford curve. It's included in the
+test cases tests/nature_image.jpg. And ofcourse the Connected TV series that inspired me to write this tool in the first place https://en.wikipedia.org/wiki/Connected_(2020_TV_series)
+
