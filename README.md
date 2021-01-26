@@ -17,6 +17,14 @@ then compile it with make
 make
 ```
 
+Running the created executable without arguments prints the usage:
+```
+$ ./img2benford
+USAGE./img2benford: <image|-random>
+  an image file (jpg or png) as argument.
+  -random to show the uniform random result of benford
+```
+
 Now run it first with random data:
 ```
 ./img2benford -random
@@ -95,12 +103,4 @@ benford count 9 = 91162 percentage = 3
 However then I proceeded to using other images on my pc and was kinda disappointed. Or rather it's not as cool as the show 'connected' made us believe.
 It works on nature like photos but I don't find it a good detector for image manipulation (maybe I'm wrong and I just didn't test enough...). 
 It is however really curious that indeed just a photo can be seen as being 'real' with this simple check (counting the msd's 0..9 and plotting it as percentages).
-
-Also running without arguments just prints the usage:
-```
-$ ./img2benford
-USAGE./img2benford: <image|-random>
-  an image file (jpg or png) as argument.
-  -random to show the uniform random result of benford
-```
 
