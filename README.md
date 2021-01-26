@@ -17,6 +17,14 @@ then compile it with make
 make
 ```
 
+You can install the binary by running
+```
+make install
+```
+And remove it with make uninstall.
+
+
+# Runing
 Running the created executable without arguments prints the usage:
 ```
 $ USAGE: ./img2benford: <image|-random>
@@ -54,6 +62,8 @@ benford count 9 = 111302 percentage = 11
 ```
 
 So that's what I expected pretty much each most significand digit is occuring about the same.
+
+# Results
 Now I took this random photo from facebook of a waterfall in nature. Ran the same test but now on an image. And 'no way', gotta
 say that's pretty interesting as a result:
 
@@ -99,11 +109,12 @@ benford count 9 = 91162 percentage = 3
 
 ```
 
-Wait, what?
-
+# Remarks
+Wait, what? OMG!
 However, then I proceeded to using other images on my pc and was kinda disappointed. Or rather it's not as cool as the show 'connected' made us believe.
+It works on 'nature like photos' but I don't find it a good detector for image manipulation (maybe I'm wrong and I just didn't test enough...).  However for the 
+first image I tried and immediately seeing this curve it was kinda amazing ;).
 
-It works on 'nature like photos' but I don't find it a good detector for image manipulation (maybe I'm wrong and I just didn't test enough...). 
 It is however really curious that indeed just a photo can be seen as being 'real' with this simple check (counting the msd's 0..9 and plotting it as percentages does indeed
 give a nice curve like shown in the tv show ).
 
