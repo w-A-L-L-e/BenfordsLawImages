@@ -18,44 +18,11 @@
  *   However it gets really interesting when using a random jpg image from a waterfall in nature.
  *   It does indeed show a curve you wouldn't expect and resembles what the show was about ;) :
  *
+ *   Example 1: run it on test photo : 
  *   ./img2benford tests/nature_image.jpg
- *
- *    #########
- *    #########
- *    #########
- *    #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########
- *    #########   #########   #########
- *    #########   #########   #########
- *    #########   #########   #########
- *    #########   #########   #########   #########
- *    #########   #########   #########   #########
- *    #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########   #########   #########   #########   #########
- *    #########   #########   #########   #########   #########   #########   #########   #########   #########
- *      1 (25)      2 (21)      3 (13)      4 (10)      5 (8)       6 (5)       7 (4)       8 (3)       9 (3)
- *
- *    benford count 1 = 648313 percentage = 25
- *    benford count 2 = 531042 percentage = 21
- *    benford count 3 = 351602 percentage = 13
- *    benford count 4 = 273866 percentage = 10
- *    benford count 5 = 211944 percentage = 8
- *    benford count 6 = 127823 percentage = 5
- *    benford count 7 = 106355 percentage = 4
- *    benford count 8 = 89524 percentage = 3
- *    benford count 9 = 91162 percentage = 3
+ *   
+ *   Example 2: run it using on million random numbers between 0 and 1000:
+ *   ./img2benford -random
  ======================================================================================================================*/
 
 #include <iostream>
@@ -319,7 +286,7 @@ int main(int argc, char **argv)
 {
 
     if (argc < 2) {
-        cerr << "USAGE" << string(argv[0]) << ": <image|-random>" << endl;
+        cerr << "USAGE: " << string(argv[0]) << ": <image|-random>" << endl;
         cerr << "  an image file (jpg or png) as argument." << endl;
         cerr << "  -random to show the uniform random result of benford" << endl;
         return 1;

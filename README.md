@@ -19,8 +19,7 @@ make
 
 Running the created executable without arguments prints the usage:
 ```
-$ ./img2benford
-USAGE./img2benford: <image|-random>
+$ USAGE: ./img2benford: <image|-random>
   an image file (jpg or png) as argument.
   -random to show the uniform random result of benford
 ```
