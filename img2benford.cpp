@@ -2,9 +2,7 @@
 /* ====================================================================================================================
  * File: img2benford.cpp
  * Author: Walter Schreppers
- * Description: This is a proof of concept literally written as quickly as possible.
- *  Was watching this 'connected' show on netflix about Benfords Law and I had to see it
- *  myself. As my initial thought was: that's total BS ;)
+ * Description: This is a proof of concept. Literally hacked together quickly in a few hours.
  *  Not clean, nor optimal code, we're using using namespace std to type less etc. ;)
  *  anyway just install libjpeg en libpng (form mac users you can run make install_deps)
  *  then just 'make' to create the img2benford executable
@@ -18,9 +16,9 @@
  *   However it gets really interesting when using a random jpg image from a waterfall in nature.
  *   It does indeed show a curve you wouldn't expect and resembles what the show was about ;) :
  *
- *   Example 1: run it on test photo : 
+ *   Example 1: run it on test photo :
  *   ./img2benford tests/nature_image.jpg
- *   
+ *
  *   Example 2: run it using on million random numbers between 0 and 1000:
  *   ./img2benford -random
  ======================================================================================================================*/
@@ -36,11 +34,12 @@
 #define PNG_DEBUG 3
 #include <png.h>
 
-// This isn't best practice, but to get things done it makes you type less ;)
+// This isn't best practice, but to get things done quickly, it's a neat shortcut to type less std:: ;)
 using namespace std;
 
 // we could be more clever here, however this simplest
-// implemtation does 1 million nr's to msb in less than 0.03s. hooorai for fast cpu's ;)
+// implemtation I could type out in seconds already
+// does 1 million nr's to msb in less than 0.03s on my 2014 macbook. Whoo for c++ and fast cpu's ;)
 int mostSignificantDigit(int nr)
 {
     int msd = nr;
@@ -52,6 +51,7 @@ int mostSignificantDigit(int nr)
     return msd;
 }
 
+// reset all counters to 0
 void reset_benford_counters(map<int, int> &benford_counts)
 {
     benford_counts[0] = 0; // only happens if number == 0
@@ -66,13 +66,13 @@ void reset_benford_counters(map<int, int> &benford_counts)
     benford_counts[9] = 0;
 }
 
+// show benford counters and plot an ascii graph
 void show_benford_counts(map<int, int> &benford_counts, long set_size)
 {
     // clearscreen (works in linux & mac, no idea for windows)
     // printf("\033c");
 
     // print a ascii graph
-    // find max y
     double max_y = (100 * benford_counts[0] / set_size);
     for (int i = 1; i <= 9; i++) {
         int bval = (100 * benford_counts[i]) / set_size;
@@ -83,7 +83,6 @@ void show_benford_counts(map<int, int> &benford_counts, long set_size)
 
     double height = max_y + 1;
     double ratio = height / max_y;
-    // cout <<endl<<"Graph height="<<height<<" max_y="<<max_y<<" ratio="<<ratio<<":"<<endl<<endl;
 
     // plot our benford graph of msd's 1 - 9
     for (int row = 0; row < height; row++) {
@@ -128,7 +127,7 @@ void abort_(const char *s, ...)
     abort();
 }
 
-// yuckie, ugly globals, used by the process_png
+// yuckie, ugly globals alert here, used by the process_png (too lazy to refactor this out for this hobby/poc)
 int x, y;
 int width, height;
 png_byte color_type;
@@ -146,12 +145,8 @@ void read_png_file(char *file_name)
     FILE *fp = fopen(file_name, "rb");
     if (!fp) abort_("[read_png_file] File %s could not be opened for reading", file_name);
     fread(header, 1, 8, fp);
-    // if (png_sig_cmp(header, 0, 8))
-    //        abort_("[read_png_file] File %s is not recognized as a PNG file", file_name);
 
-    /* initialize stuff */
     png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-
     if (!png_ptr) abort_("[read_png_file] png_create_read_struct failed");
 
     info_ptr = png_create_info_struct(png_ptr);
@@ -197,11 +192,9 @@ void process_png(map<int, int> &benford_counts)
         png_byte *row = row_pointers[y];
         for (x = 0; x < width; x++) {
             png_byte *ptr = &(row[x * 4]);
-            // printf("Pixel at position [ %d - %d ] has RGBA values: %d - %d - %d - %d\n",
-            // x, y, ptr[0], ptr[1], ptr[2], ptr[3]);
-            // just add red+green+blue
+            // just add red+green+blue values, then compute msd
             int pixel_value = ptr[0] + ptr[1] + ptr[2];
-            // cout << "pixel ="<<pixel_value<<endl;
+            // cout << "pixel ="<<pixel_value<<endl; //debug
             int msd = mostSignificantDigit(pixel_value);
             benford_counts[msd] = benford_counts[msd] + 1;
         }
@@ -251,6 +244,7 @@ int process_jpg(const char *Name, map<int, int> &benford_counts)
             }
 
             // cout << "r="<< (int)r << " g=" << (int)g << " b=" << (int)b << endl;
+            // again just add red+green+blue and then compute msd
             long pixel_value = (int)r + (int)g + (int)b;
             int msd = mostSignificantDigit(pixel_value);
             benford_counts[msd] = benford_counts[msd] + 1;
@@ -269,7 +263,7 @@ int process_jpg(const char *Name, map<int, int> &benford_counts)
 
 bool check_extension(const string &image_file, const string &ext1, const string &ext2 = "")
 {
-    // quickndirty lowercase filename:
+    // lowercase filename, again most likey this can be done way cleaner. this works though ;)
     string fn = "";
     for (int pos = 0; pos < image_file.size(); pos++) {
         fn += tolower(image_file[pos]);
@@ -305,20 +299,21 @@ int main(int argc, char **argv)
             benford_counts[msd] = benford_counts[msd] + 1; // increase msd count for this number
         }
 
-        cout << "Uniform random benford on a million values:" << endl;
+        cout << "Benford applied to one million random values:" << endl;
         show_benford_counts(benford_counts, 1000000);
         return 0;
     }
 
-    // cout << "Benfords law results for "<< argv[1]<<":" << endl;
     // open an image given by command line arg.
     string image_file = string(argv[1]);
 
+    // process jpeg image
     if (check_extension(image_file, "jpg", "jpeg")) {
         process_jpg(argv[1], benford_counts);
         return 0;
     }
 
+    // process png image
     if (check_extension(image_file, "png")) {
         read_png_file(argv[1]);
         process_png(benford_counts);
