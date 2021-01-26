@@ -111,10 +111,9 @@ benford count 9 = 91162 percentage = 3
 
 # Remarks
 Wait, what? OMG!
-However, then I proceeded to using other images on my pc and was kinda disappointed. Or rather it's not as cool as the show 'connected' made us believe.
-It works on 'nature like photos' but I don't find it a good detector for image manipulation (maybe I'm wrong and I just didn't test enough...).  However for the 
-first image I tried and immediately seeing this curve it was kinda amazing ;).
-
-It is however really curious that indeed just a photo can be seen as being 'real' with this simple check (counting the msd's 0..9 and plotting it as percentages does indeed
-give a nice curve like shown in the tv show ).
+However, then I proceeded to using other images on my pc and was kinda disappointed. Or rather it's not as good as the show 'connected' made us believe.
+It works on this example but I can find plenty of 'real' photos that don't give this nice curve. 
+Incidently the second test also is not that bad (./img2benford tests/connected_digits_screenshot.jpg). 
+However take a photo in the city with buildings as a background and you get a totally deviating curve even though it wasn't manipulated.
+So maybe Benford only works on 'natural' things, meh, who knows... It was still worth the little effort to try it out myself ;).
 
