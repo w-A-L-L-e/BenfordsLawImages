@@ -96,3 +96,11 @@ However then I proceeded to using other images on my pc and was kinda disappoint
 It works on nature like photos but I don't find it a good detector for image manipulation (maybe I'm wrong and I just didn't test enough...). 
 It is however really curious that indeed just a photo can be seen as being 'real' with this simple check (counting the msd's 0..9 and plotting it as percentages).
 
+Also running without arguments just prints the usage:
+```
+$ ./img2benford
+USAGE./img2benford: <image|-random>
+  an image file (jpg or png) as argument.
+  -random to show the uniform random result of benford
+```
+
