@@ -130,7 +130,7 @@ to the benford curve than the original (normally the 1s are around 30%, in the o
 
 Some more screenshots and an explanation of the algorithm is here https://walter.schreppers.com/hobby_project/benfords_law
 
-Ow and last but definately not least: if you can find any mistakes or make improvements, feel free to put them in an issue, comment or pull request.
+Ow and last but definately not least: if you can find any mistakes or make improvements. Feel free to put them in an issue, comment or pull request.
 
 # Credits
 Jenke Goffa for taking that beautiful picture of a waterfall that also produces the nice benford curve. It's included in the
