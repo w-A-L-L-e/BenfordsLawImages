@@ -7,7 +7,7 @@ can be improved. But it was really funny to see the graph on a random image from
 was advertised in the netflix show.
 
 
-# installing
+# Installing
 On macOS just run make install_deps (you will need homebrew and xcode installed).
 
 ```
@@ -19,14 +19,14 @@ then compile it with make
 make
 ```
 
-You can install the binary by running
+Optional: You can install the binary in /usr/local/bin by running
 ```
 make install
 ```
 And remove it with make uninstall.
 
 
-# Runing
+# Running
 Running the created executable without arguments prints the usage:
 ```
 $ USAGE: ./img2benford: <image|-random>
