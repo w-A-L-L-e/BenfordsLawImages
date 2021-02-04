@@ -136,3 +136,7 @@ Ow and last but definately not least: if you can find any mistakes or make impro
 Jenke Goffa for taking that beautiful picture of a waterfall that also produces the nice benford curve. It's included in the
 test cases tests/nature_image.jpg. And ofcourse the Connected TV series that inspired me to write this tool in the first place https://en.wikipedia.org/wiki/Connected_(2020_TV_series)
 
+# Future work/improvements
+I watched this recent youtube video https://www.youtube.com/watch?v=etx0k1nLn78 we could easily add a flag to also inspect the last 2 digits instead of the MSD.
+Maybe that'll give some better results. Here we would expect a more flat graph instead and something spiking if you edited. Again 'if it works for images'. Which is a big if...
+
