@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string>
 #include <time.h>
+#include <stdarg.h> // needed for va_start on linux
 
 #include <jpeglib.h>
 #define PNG_DEBUG 3
