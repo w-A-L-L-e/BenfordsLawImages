@@ -132,6 +132,33 @@ Some more screenshots and an explanation of the algorithm is here https://walter
 
 Ow and last but definately not least: if you can find any mistakes or make improvements. Feel free to put them in an issue, comment or pull request.
 
+For completeness sake a sample is edited where we do see detection does work. If it worked so well on all altered images this would have been a great find.
+
+```
+./img2benford tests/altered_image_detection_works.png 
+                                                                                                            
+                                                #########                                                   
+                        #########   #########   #########                                                   
+                        #########   #########   #########                                                   
+                        #########   #########   #########                                                   
+                        #########   #########   #########                                                   
+                        #########   #########   #########                                                   
+                        #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########                                       
+#########   #########   #########   #########   #########   #########   #########                           
+#########   #########   #########   #########   #########   #########   #########   #########   #########   
+#########   #########   #########   #########   #########   #########   #########   #########   #########   
+  1 (11)      2 (11)      3 (17)      4 (17)      5 (18)      6 (12)      7 (3)       8 (2)       9 (2)
+```
+
+
 # Credits
 Jenke Goffa for taking that beautiful picture of a waterfall that also produces the nice benford curve. It's included in the
 test cases tests/nature_image.jpg. And ofcourse the Connected TV series that inspired me to write this tool in the first place https://en.wikipedia.org/wiki/Connected_(2020_TV_series)
